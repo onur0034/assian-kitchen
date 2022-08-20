@@ -72,3 +72,25 @@ const menu = [
     desc: `Red bean paste dessert, serving with honey.`,
   },
 ];
+
+let koreaButton = document.querySelector("#korea");
+let japanButton = document.querySelector("#japan");
+let chinaButton = document.querySelector("#china");
+let manuMain = document.querySelector("#manuMain");
+
+// let japanFood = menu.filter(item => {
+//   item.category == "Japan"
+  
+// });
+
+let filteredKorea = menu.filter(item => { item.id==1});
+console.log(filteredKorea);
+
+koreaButton.onclick = () => {
+  manuMain.filter(item=>{})
+};
+
+
+
+
+
