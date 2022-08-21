@@ -78,16 +78,36 @@ let japanButton = document.querySelector("#japan");
 let chinaButton = document.querySelector("#china");
 let manuMain = document.querySelector("#manuMain");
 
+let birinci = querySelector("#1");
+birinci.h3.innerHTML = "Tteokbokki";
+
 // let japanFood = menu.filter(item => {
 //   item.category == "Japan"
   
 // });
+let filteredKorea = menu.filter(item => { return item.category === "Korea" });
+filteredKorea.map(item=> {return item.cl})
 
-let filteredKorea = menu.filter(item => { item.id==1});
+let filteredJapan = menu.filter(item => { return item.category === "Japan" });
+
+let filteredChina = menu.filter(item => { return item.category === "China" });
+
+console.log(filteredChina);
 console.log(filteredKorea);
+console.log(filteredJapan);
+
+let allChildren = document.querySelectorAll("div.menu-items");
+console.log(allChildren);
 
 koreaButton.onclick = () => {
-  manuMain.filter(item=>{})
+  // if (!id === 1 || !id === 3 || !id === 7) {
+  //   
+  // }
+  console.log("onClick şu an aktif");
+
+   
+ 
+
 };
 
 
