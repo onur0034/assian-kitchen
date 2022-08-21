@@ -78,8 +78,7 @@ let japanButton = document.querySelector("#japan");
 let chinaButton = document.querySelector("#china");
 let manuMain = document.querySelector("#manuMain");
 
-let birinci = querySelector("#1");
-birinci.h3.innerHTML = "Tteokbokki";
+
 
 // let japanFood = menu.filter(item => {
 //   item.category == "Japan"
