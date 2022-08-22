@@ -73,43 +73,47 @@ const menu = [
   },
 ];
 
-let koreaButton = document.querySelector("#korea");
-let japanButton = document.querySelector("#japan");
-let chinaButton = document.querySelector("#china");
-let manuMain = document.querySelector("#manuMain");
+const categories = menu.reduce((values, item) => {   // countries were got 
+  if (!values.includes(item.category)) {            // same calues eliminated...
+    values.push(item.category);
+  }
+  return values;
+},
+["All"]                                           // begininning value for reduce method
+);
 
+console.log(categories);
 
+for (let i = 0; i < categories.length; i++){
+  let buttonSection = document.querySelector(".btn-container");
+  let newButton = document.createElement("button");
+  newButton.setAttribute("type", "button");
+  newButton.setAttribute("data", categories[i]);
+  newButton.addEventListener("click", buttonClick);
+  newButton.classList.add("btn", "btn-item", "btn-outline-dark");
+  newButton.innerHTML = categories[i];
+  buttonSection.append(newButton);
 
-// let japanFood = menu.filter(item => {
-//   item.category == "Japan"
+}
+
+function buttonClick() {
+  let filtered = menu.filter(item => { item.category == this.getAttribute("data") });
+
+  this.getAttribute("data") == "All" ? (filtered = menu) : "";
+  let result = filtered.map(itemResult => {
+    
+    return `<div class="menu-items col-lg-6 col-sm-12">
+
+    <img src="${itemResult.img}" alt="" class="photo">
+      <div class="menu-info">
+          <div class="menu-title">
+            <h4> ${itemResult.title}</h4>
+            <h4 class = "price">${itemResult.price}</h4>
+          </div>
+        <div class = "menu-text">${itemResult.desc}</div>
+      </div>
+    </div>`;
+  }).join("");
+
   
-// });
-let filteredKorea = menu.filter(item => { return item.category === "Korea" });
-filteredKorea.map(item=> {return item.cl})
-
-let filteredJapan = menu.filter(item => { return item.category === "Japan" });
-
-let filteredChina = menu.filter(item => { return item.category === "China" });
-
-console.log(filteredChina);
-console.log(filteredKorea);
-console.log(filteredJapan);
-
-let allChildren = document.querySelectorAll("div.menu-items");
-console.log(allChildren);
-
-koreaButton.onclick = () => {
-  // if (!id === 1 || !id === 3 || !id === 7) {
-  //   
-  // }
-  console.log("onClick şu an aktif");
-
-   
- 
-
-};
-
-
-
-
-
+}
