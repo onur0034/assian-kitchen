@@ -89,7 +89,7 @@ for (let i = 0; i < categories.length; i++){
   let newButton = document.createElement("button");
   newButton.setAttribute("type", "button");
   newButton.setAttribute("data", categories[i]);
-  newButton.addEventListener("click", buttonClick);
+  newButton.addEventListener("click", buttonClick);       //will be identified...
   newButton.classList.add("btn", "btn-item", "btn-outline-dark");
   newButton.innerHTML = categories[i];
   buttonSection.append(newButton);
@@ -97,10 +97,14 @@ for (let i = 0; i < categories.length; i++){
 }
 
 function buttonClick() {
-  let filtered = menu.filter(item => { item.category == this.getAttribute("data") });
+  let filtered = menu.filter(item => item.category == this.getAttribute("data"));
+  
 
   this.getAttribute("data") == "All" ? (filtered = menu) : "";
+  //if data equalls all all items will be showed, otherwise array will be stayed empty
+ 
   let result = filtered.map(itemResult => {
+
     
     return `<div class="menu-items col-lg-6 col-sm-12">
 
@@ -114,6 +118,30 @@ function buttonClick() {
       </div>
     </div>`;
   }).join("");
+  //it returns array, so we turn it into string
 
-  
+  const sectionCenter = document.querySelector(".section-center");
+  sectionCenter.innerHTML = result; 
+  //result equals components above.
 }
+
+
+let result = menu
+  .map((itemResult) => {
+    return `<div class="menu-items col-lg-6 col-sm-12">
+    <img src="${itemResult.img}" alt="" class = "photo">
+    <div class="menu-info">
+    <div class="menu-title">
+      <h4>${itemResult.title}</h4>
+      <h4 class = "price">${itemResult.price}</h4>
+    </div>
+    <div class = "menu-text">${itemResult.desc}</div>
+    </div>
+  </div>
+  `;
+  })
+  .join("");
+const sectionCenter = document.querySelector(".section-center");
+sectionCenter.innerHTML = result;
+
+//when user opens page...
